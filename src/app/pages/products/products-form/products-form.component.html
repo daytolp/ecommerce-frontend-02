@@ -1,0 +1,31 @@
+<br>
+@if (alerta()?.mostrar) {
+  <div class="alert alert-{{ alerta()?.color }} alert-dismissible fade show" role="alert">
+    {{ alerta()?.mensaje }}
+    <button type="button" class="btn-close" aria-label="Close" (click)="alerta.set(null)"></button>
+  </div>
+}
+
+
+<div class="card p-3">
+  <h5>Nuevo Producto</h5>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="mb-3">
+      <label>Nombre</label>
+      <input class="form-control" formControlName="name">
+    </div>
+
+    <div class="mb-3">
+      <label>Precio</label>
+      <input type="number" class="form-control" formControlName="price">
+    </div>
+
+    <div class="mb-3">
+      <label>Stock</label>
+      <input type="number" class="form-control" formControlName="stock">
+    </div>
+
+    <button class="btn btn-primary">Guardar</button>
+  </form>
+</div>
