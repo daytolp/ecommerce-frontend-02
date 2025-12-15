@@ -48,7 +48,6 @@ docker-compose up --build --force-recreate
 ## Puertos
 
 - Frontend: http://localhost:4200
-- Nginx Proxy: http://localhost:80
 
 ## Notas
 
@@ -56,3 +55,4 @@ docker-compose up --build --force-recreate
 - Configuración optimizada con compresión gzip
 - Headers de seguridad incluidos
 - Manejo correcto de rutas de Angular SPA
+- Configuración simplificada sin proxy reverso

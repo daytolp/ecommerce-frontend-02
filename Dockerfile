@@ -8,8 +8,8 @@ WORKDIR /app
 # Copiar archivos de dependencias
 COPY package*.json ./
 
-# Instalar dependencias
-RUN npm ci --only=production
+# Instalar todas las dependencias (incluyendo devDependencies para el build)
+RUN npm ci
 
 # Copiar el código fuente
 COPY . .
@@ -24,7 +24,7 @@ FROM nginx:alpine as production-stage
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copiar archivos construidos desde la etapa anterior
-COPY --from=build-stage /app/dist/ejemplo-frontend-02 /usr/share/nginx/html
+COPY --from=build-stage /app/dist/ejemplo-frontend-02/browser /usr/share/nginx/html
 
 # Exponer puerto 80
 EXPOSE 80
