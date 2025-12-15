@@ -5,6 +5,7 @@ import { of, throwError } from 'rxjs';
 import { ProductsFormComponent } from './products-form.component';
 import { ProductService } from '../../../core/services/product.service';
 import { CommonModule } from '@angular/common';
+import { Product } from '../../../models/product';
 
 describe('ProductsFormComponent', () => {
   let component: ProductsFormComponent;
@@ -133,7 +134,7 @@ describe('ProductsFormComponent', () => {
         mensaje: 'Producto creado exitosamente.',
         color: 'success'
       });
-      expect(component.form.get('name')?.value).toBe('');
+      expect(component.form.get('name')?.value).toBeNull();
       expect(component.form.get('price')?.value).toBeNull();
       expect(component.form.get('stock')?.value).toBeNull();
     });
@@ -217,13 +218,15 @@ describe('ProductsFormComponent', () => {
         price: 100,
         stock: 10
       });
-
-      productServiceSpy.createProduct.and.returnValue(of(null as any));
+      const product = {
+        id: 1, name: 'Test Product', price: 100, stock: 10
+      } as Product;
+      productServiceSpy.createProduct.and.returnValue(of(product));
 
       component.save();
 
       expect(component.alerta()?.color).toBe('success');
-      expect(component.form.get('name')?.value).toBe('');
+      expect(component.form.get('name')?.value).toBeNull();
     });
   });
 });
