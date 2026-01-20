@@ -24,9 +24,8 @@ export class ProductsFormComponent {
   ) {}
 
   save() {
-    if (this.form.invalid) {
-      this.alerta.set({ mostrar: true, mensaje: 'Por favor complete todos los campos requeridos correctamente.', color: 'danger' });
-      return
+   if (!this.isValid()) {
+      return;
     }
 
     this.productService.createProduct(this.form.value as any).subscribe({
@@ -38,6 +37,14 @@ export class ProductsFormComponent {
         this.alerta.set({ mostrar: true, mensaje: 'Error al crear el producto. Intente nuevamente.', color: 'danger' });
       }
     });
+  }
+
+  isValid(): boolean {
+    if (this.form.invalid) {
+      this.alerta.set({ mostrar: true, mensaje: 'Por favor complete todos los campos requeridos correctamente.', color: 'danger' });
+      return false;
+    }
+    return true;
   }
 
 }
