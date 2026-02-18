@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './invitation.component.html',
   styleUrl: './invitation.component.css'
 })
-export class InvitationComponent implements AfterViewInit {
+export class InvitationComponent implements AfterViewInit, OnDestroy {
   @ViewChild('invitationCanvas', { static: false }) canvasRef!: ElementRef<HTMLCanvasElement>;
   
   private canvas!: HTMLCanvasElement;
@@ -233,8 +233,18 @@ export class InvitationComponent implements AfterViewInit {
 
     try {
       const stream = this.canvas.captureStream(30); // 30 FPS
+      
+      // Check for supported mimeType and use fallback if needed
+      let mimeType = 'video/webm;codecs=vp9';
+      if (!MediaRecorder.isTypeSupported(mimeType)) {
+        mimeType = 'video/webm;codecs=vp8';
+        if (!MediaRecorder.isTypeSupported(mimeType)) {
+          mimeType = 'video/webm';
+        }
+      }
+      
       this.mediaRecorder = new MediaRecorder(stream, {
-        mimeType: 'video/webm;codecs=vp9',
+        mimeType: mimeType,
         videoBitsPerSecond: 5000000
       });
 
@@ -263,7 +273,7 @@ export class InvitationComponent implements AfterViewInit {
     } catch (error) {
       console.error('Error recording video:', error);
       this.isRecording = false;
-      alert('Error al grabar el video. Por favor, intenta nuevamente.');
+      alert('Error al grabar el video. Verifica que tu navegador soporte grabación de video o intenta con otro navegador. Detalles: ' + (error instanceof Error ? error.message : 'Error desconocido'));
     }
   }
 
