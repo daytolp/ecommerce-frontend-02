@@ -5,5 +5,6 @@ export const routes: Routes = [
   { path: '', redirectTo: 'productos', pathMatch: 'full' },
   { path: 'productos', loadComponent: () => import('./pages/products/products-list/products-list.component').then(m => m.ProductsListComponent) },
   { path: 'nuevo-producto', loadComponent: () => import('./pages/products/products-form/products-form.component').then(m => m.ProductsFormComponent) },
+  { path: 'invitacion', loadComponent: () => import('./pages/invitation/invitation.component').then(m => m.InvitationComponent) },
   { path: '**', redirectTo: 'productos' }
 ]

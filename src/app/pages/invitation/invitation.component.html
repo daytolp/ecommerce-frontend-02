@@ -1,0 +1,56 @@
+<div class="invitation-container">
+  <h1 class="text-center mb-4">Invitación de Cumpleaños</h1>
+  
+  <div class="canvas-wrapper">
+    <canvas #invitationCanvas></canvas>
+  </div>
+
+  <div class="controls text-center mt-4">
+    <button 
+      class="btn btn-primary btn-lg me-3" 
+      (click)="recordVideo()"
+      [disabled]="isRecording || isDownloadReady">
+      <span *ngIf="!isRecording && !isDownloadReady">🎥 Grabar Video</span>
+      <span *ngIf="isRecording">⏺️ Grabando... (10 segundos)</span>
+      <span *ngIf="isDownloadReady">✅ Video Listo</span>
+    </button>
+    
+    <button 
+      class="btn btn-success btn-lg" 
+      (click)="downloadVideo()"
+      [disabled]="!isDownloadReady">
+      💾 Descargar Invitación
+    </button>
+  </div>
+
+  <div class="instructions mt-4">
+    <div class="alert alert-info">
+      <h5>📝 Instrucciones:</h5>
+      <ol>
+        <li>La animación se reproduce continuamente arriba</li>
+        <li>Haz clic en "Grabar Video" para capturar la invitación</li>
+        <li>Espera 10 segundos mientras se graba</li>
+        <li>Haz clic en "Descargar Invitación" para guardar el video</li>
+        <li>¡Comparte la invitación con tus invitados!</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="details mt-4">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title text-center mb-4">Detalles de la Fiesta</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <p><strong>👧 Cumpleañera:</strong> Nelly Yunuen</p>
+            <p><strong>🎂 Edad:</strong> 3 años</p>
+          </div>
+          <div class="col-md-6">
+            <p><strong>🏰 Tema:</strong> La Bella Durmiente</p>
+            <p><strong>📍 Lugar:</strong> Calle Revolución 44</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

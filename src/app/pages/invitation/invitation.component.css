@@ -1,0 +1,146 @@
+.invitation-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #9370DB;
+  font-family: Georgia, serif;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(255, 182, 193, 0.5);
+}
+
+.canvas-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #FFB6C1 0%, #DDA0DD 50%, #9370DB 100%);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(147, 112, 219, 0.3);
+}
+
+canvas {
+  max-width: 100%;
+  height: auto;
+  border: 5px solid #FFD700;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.controls {
+  margin-top: 2rem;
+}
+
+.btn {
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #FF69B4, #9370DB);
+  border: none;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #9370DB, #FF69B4);
+  transform: scale(1.05);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  border: none;
+  color: #4B0082;
+}
+
+.btn-success:hover:not(:disabled) {
+  background: linear-gradient(135deg, #FFA500, #FFD700);
+  transform: scale(1.05);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.instructions {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.alert-info {
+  background: linear-gradient(135deg, #E6E6FA, #FFB6C1);
+  border: 2px solid #9370DB;
+  color: #4B0082;
+}
+
+.alert-info h5 {
+  color: #9370DB;
+  font-weight: bold;
+}
+
+.alert-info ol {
+  margin-bottom: 0;
+}
+
+.alert-info li {
+  margin-bottom: 0.5rem;
+}
+
+.details {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.card {
+  border: 3px solid #FFB6C1;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(147, 112, 219, 0.2);
+}
+
+.card-title {
+  color: #9370DB;
+  font-family: Georgia, serif;
+  font-weight: bold;
+}
+
+.card-body p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #4B0082;
+}
+
+.card-body strong {
+  color: #FF69B4;
+}
+
+@media (max-width: 768px) {
+  .invitation-container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .canvas-wrapper {
+    padding: 1rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .controls .btn {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+}
